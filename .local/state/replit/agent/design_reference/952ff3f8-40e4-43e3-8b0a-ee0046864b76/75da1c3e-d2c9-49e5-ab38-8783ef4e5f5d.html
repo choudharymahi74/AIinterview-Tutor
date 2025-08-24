@@ -1,0 +1,1027 @@
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Platform - Practice with AI-Powered Mock Interviews</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                        },
+                        secondary: {
+                            500: '#4f46e5',
+                            600: '#4338ca',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(10px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+</head>
+<body class="font-inter bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <!-- Navigation -->
+    <!-- @COMPONENT: Navigation [fixed header with auth state] -->
+    <nav class="bg-white dark:bg-slate-800 shadow-sm border-b border-slate-200 dark:border-slate-700 fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo and Brand -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-microphone text-white text-sm"></i>
+                        </div>
+                        <span class="text-xl font-bold text-slate-900 dark:text-white">InterviewAI</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Links (Desktop) -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-slate-600 dark:text-slate-300 hover:text-primary-500 transition-colors">Features</a>
+                    <a href="#how-it-works" class="text-slate-600 dark:text-slate-300 hover:text-primary-500 transition-colors">How it Works</a>
+                    <a href="#pricing" class="text-slate-600 dark:text-slate-300 hover:text-primary-500 transition-colors">Pricing</a>
+                </div>
+
+                <!-- Auth Buttons & Theme Toggle -->
+                <div class="flex items-center space-x-4">
+                    <button data-event="click:toggleTheme" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button data-event="click:showLogin" class="text-slate-600 dark:text-slate-300 hover:text-primary-500 font-medium transition-colors">Sign In</button>
+                    <button data-event="click:showRegister" class="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: HeroSection [main landing content] -->
+    <section class="pt-16 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8 animate-fade-in">
+                    <div class="space-y-4">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight">
+                            Master Your Interview Skills with 
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500">AI-Powered</span> 
+                            Practice
+                        </h1>
+                        <p class="text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Practice real-time interviews with our AI voice agent. Get personalized feedback, improve your confidence, and land your dream job.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button data-event="click:startDemo" class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-2">
+                            <i class="fas fa-play"></i>
+                            <span>Start Free Interview</span>
+                        </button>
+                        <button data-event="click:watchDemo" class="border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:border-primary-500 hover:text-primary-500 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center space-x-2">
+                            <i class="fas fa-video"></i>
+                            <span>Watch Demo</span>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center space-x-6 text-sm text-slate-500 dark:text-slate-400">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>No credit card required</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock text-blue-500"></i>
+                            <span>5-minute setup</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative animate-slide-up">
+                    <!-- Main Dashboard Preview -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+                        <!-- Dashboard Header -->
+                        <div class="bg-slate-50 dark:bg-slate-900 px-6 py-4 border-b border-slate-200 dark:border-slate-700">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold text-slate-900 dark:text-white">Interview Dashboard</h3>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dashboard Content -->
+                        <div class="p-6 space-y-6">
+                            <!-- Stats Cards -->
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 p-4 rounded-xl">
+                                    <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">12</div>
+                                    <div class="text-sm text-blue-600/70 dark:text-blue-400/70">Interviews</div>
+                                </div>
+                                <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-4 rounded-xl">
+                                    <div class="text-2xl font-bold text-green-600 dark:text-green-400">8.4</div>
+                                    <div class="text-sm text-green-600/70 dark:text-green-400/70">Avg Score</div>
+                                </div>
+                                <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-4 rounded-xl">
+                                    <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">94%</div>
+                                    <div class="text-sm text-purple-600/70 dark:text-purple-400/70">Confidence</div>
+                                </div>
+                            </div>
+
+                            <!-- Recent Interview -->
+                            <div class="bg-slate-50 dark:bg-slate-900 rounded-xl p-4">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h4 class="font-medium text-slate-900 dark:text-white">Recent Interview</h4>
+                                    <span class="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">Completed</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="text-sm text-slate-600 dark:text-slate-400">Frontend Developer - React</div>
+                                    <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                                        <div class="bg-gradient-to-r from-green-400 to-green-500 h-2 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400">Score: 8.5/10</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Voice Indicator -->
+                    <div class="absolute -bottom-4 -right-4 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full p-4 shadow-lg animate-pulse-slow">
+                        <i class="fas fa-microphone text-white text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- Features Section -->
+    <!-- @COMPONENT: FeaturesSection [key platform features] -->
+    <section id="features" class="py-20 bg-white dark:bg-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+                    Everything You Need to Excel
+                </h2>
+                <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                    Our comprehensive AI interview platform provides all the tools you need to practice, improve, and succeed in your next interview.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Voice-Enabled Interviews -->
+                <div class="group bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-microphone text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Voice-Enabled Mock Interviews</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Practice with AI voice agents that simulate real interview conversations. Get comfortable with verbal communication and timing.
+                    </p>
+                </div>
+
+                <!-- Dynamic Questions -->
+                <div class="group bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-gradient-to-br from-secondary-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-brain text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Dynamic Question Generation</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        AI-powered questions tailored to your specific job role, tech stack, and experience level using Google Gemini.
+                    </p>
+                </div>
+
+                <!-- AI Feedback -->
+                <div class="group bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-chart-line text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">AI Feedback & Scoring</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Receive detailed feedback on communication skills, confidence levels, and technical knowledge with actionable insights.
+                    </p>
+                </div>
+
+                <!-- Dashboard -->
+                <div class="group bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-tachometer-alt text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Comprehensive Dashboard</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Track your progress, view interview history, and analyze performance trends with detailed analytics and insights.
+                    </p>
+                </div>
+
+                <!-- Modern UI -->
+                <div class="group bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-palette text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Modern UI/UX</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Beautiful, responsive interface built with Tailwind CSS and shadcn components. Works seamlessly on all devices.
+                    </p>
+                </div>
+
+                <!-- Real-time Processing -->
+                <div class="group bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-bolt text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Real-time Processing</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Instant voice processing and transcription with LiveKit integration for seamless interview experiences.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: FeaturesSection -->
+
+    <!-- Dashboard Preview -->
+    <!-- @COMPONENT: DashboardPreview [detailed dashboard interface] -->
+    <section class="py-20 bg-slate-50 dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+                    Your Interview Command Center
+                </h2>
+                <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                    Track your progress, analyze performance, and manage your interview preparation from one powerful dashboard.
+                </p>
+            </div>
+
+            <!-- Main Dashboard Interface -->
+            <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+                <!-- Dashboard Header -->
+                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 px-8 py-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white" data-bind="user.name">Welcome back, Sarah!</h3>
+                            <p class="text-blue-100 mt-1" data-bind="user.lastLogin">Last interview: 2 days ago</p>
+                        </div>
+                        <button data-event="click:startNewInterview" class="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-xl font-semibold transition-colors flex items-center space-x-2">
+                            <i class="fas fa-plus"></i>
+                            <span>New Interview</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dashboard Content -->
+                <div class="p-8">
+                    <!-- Stats Overview -->
+                    <div class="grid md:grid-cols-4 gap-6 mb-8">
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 p-6 rounded-2xl">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-clipboard-list text-white"></i>
+                                </div>
+                                <span class="text-xs bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-full">+3 this week</span>
+                            </div>
+                            <div class="text-3xl font-bold text-blue-600 dark:text-blue-400" data-bind="stats.totalInterviews">24</div>
+                            <div class="text-sm text-blue-600/70 dark:text-blue-400/70">Total Interviews</div>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-6 rounded-2xl">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-star text-white"></i>
+                                </div>
+                                <span class="text-xs bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-2 py-1 rounded-full">↑ 0.4</span>
+                            </div>
+                            <div class="text-3xl font-bold text-green-600 dark:text-green-400" data-bind="stats.averageScore">8.6</div>
+                            <div class="text-sm text-green-600/70 dark:text-green-400/70">Average Score</div>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-6 rounded-2xl">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-chart-line text-white"></i>
+                                </div>
+                                <span class="text-xs bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-2 py-1 rounded-full">↑ 12%</span>
+                            </div>
+                            <div class="text-3xl font-bold text-purple-600 dark:text-purple-400" data-bind="stats.confidenceLevel">92%</div>
+                            <div class="text-sm text-purple-600/70 dark:text-purple-400/70">Confidence Level</div>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 p-6 rounded-2xl">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-clock text-white"></i>
+                                </div>
+                                <span class="text-xs bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300 px-2 py-1 rounded-full">This month</span>
+                            </div>
+                            <div class="text-3xl font-bold text-orange-600 dark:text-orange-400" data-bind="stats.practiceTime">14h</div>
+                            <div class="text-sm text-orange-600/70 dark:text-orange-400/70">Practice Time</div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Interviews and Performance Chart -->
+                    <div class="grid lg:grid-cols-3 gap-8">
+                        <!-- Recent Interviews -->
+                        <div class="lg:col-span-2">
+                            <div class="flex items-center justify-between mb-6">
+                                <h4 class="text-xl font-semibold text-slate-900 dark:text-white">Recent Interviews</h4>
+                                <button data-event="click:viewAllInterviews" class="text-primary-500 hover:text-primary-600 font-medium">View All</button>
+                            </div>
+
+                            <div class="space-y-4">
+                                <!-- @MAP: recentInterviews.map(interview => ( -->
+                                <div data-mock="true" class="bg-slate-50 dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                                                <i class="fas fa-code text-white"></i>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-semibold text-slate-900 dark:text-white">Frontend Developer - React</h5>
+                                                <p class="text-sm text-slate-500 dark:text-slate-400">2 hours ago</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-2xl font-bold text-green-500">8.7</div>
+                                            <div class="text-xs text-slate-500 dark:text-slate-400">Score</div>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between text-sm">
+                                            <span class="text-slate-600 dark:text-slate-400">Technical Knowledge</span>
+                                            <span class="font-medium">9.0</span>
+                                        </div>
+                                        <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                                            <div class="bg-gradient-to-r from-green-400 to-green-500 h-2 rounded-full" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div data-mock="true" class="bg-slate-50 dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-500 rounded-xl flex items-center justify-center">
+                                                <i class="fas fa-server text-white"></i>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-semibold text-slate-900 dark:text-white">Backend Developer - Node.js</h5>
+                                                <p class="text-sm text-slate-500 dark:text-slate-400">1 day ago</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-2xl font-bold text-blue-500">7.8</div>
+                                            <div class="text-xs text-slate-500 dark:text-slate-400">Score</div>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between text-sm">
+                                            <span class="text-slate-600 dark:text-slate-400">Communication</span>
+                                            <span class="font-medium">8.2</span>
+                                        </div>
+                                        <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                                            <div class="bg-gradient-to-r from-blue-400 to-blue-500 h-2 rounded-full" style="width: 82%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- @END_MAP )) -->
+                            </div>
+                        </div>
+
+                        <!-- Performance Trends -->
+                        <div>
+                            <h4 class="text-xl font-semibold text-slate-900 dark:text-white mb-6">Performance Trends</h4>
+                            <div class="bg-slate-50 dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
+                                <!-- Chart Placeholder -->
+                                <div class="h-48 flex items-center justify-center text-slate-400 dark:text-slate-500 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-lg">
+                                    <div class="text-center">
+                                        <i class="fas fa-chart-area text-3xl mb-2"></i>
+                                        <p>Performance Chart</p>
+                                        <p class="text-xs"><!-- @FUNCTIONALITY: Implement Chart.js or similar for score trends --></p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Quick Stats -->
+                                <div class="grid grid-cols-2 gap-4 mt-6">
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-primary-500">↑15%</div>
+                                        <div class="text-xs text-slate-500 dark:text-slate-400">Improvement</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-green-500">Top 20%</div>
+                                        <div class="text-xs text-slate-500 dark:text-slate-400">Ranking</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: DashboardPreview -->
+
+    <!-- Interview Interface Preview -->
+    <!-- @COMPONENT: InterviewInterface [live interview screen] -->
+    <section class="py-20 bg-white dark:bg-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+                    Realistic Interview Experience
+                </h2>
+                <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                    Experience natural conversations with our AI interviewer. Practice with voice, get real-time feedback, and build confidence.
+                </p>
+            </div>
+
+            <!-- Interview Interface -->
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-slate-900 rounded-3xl shadow-2xl overflow-hidden">
+                    <!-- Interface Header -->
+                    <div class="bg-slate-800 px-6 py-4 border-b border-slate-700">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-red-400 rounded-full animate-pulse"></div>
+                                    <span class="text-red-400 text-sm font-medium">LIVE INTERVIEW</span>
+                                </div>
+                                <div class="text-slate-400 text-sm">Frontend Developer - React Position</div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="text-slate-400 text-sm">15:30 / 30:00</div>
+                                <button data-event="click:endInterview" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                    End Interview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Interview Area -->
+                    <div class="p-8">
+                        <div class="grid lg:grid-cols-3 gap-8">
+                            <!-- AI Interviewer Section -->
+                            <div class="lg:col-span-2 space-y-6">
+                                <!-- AI Avatar/Visualization -->
+                                <div class="bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-2xl p-8 text-center">
+                                    <div class="w-24 h-24 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full mx-auto mb-6 flex items-center justify-center animate-pulse-slow">
+                                        <i class="fas fa-robot text-white text-3xl"></i>
+                                    </div>
+                                    <h3 class="text-xl font-semibold text-white mb-2">Alex - AI Interviewer</h3>
+                                    <p class="text-slate-300 text-sm">Senior Frontend Technical Lead</p>
+                                </div>
+
+                                <!-- Current Question -->
+                                <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <i class="fas fa-question text-white text-sm"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="text-white font-medium mb-2">Current Question</h4>
+                                            <p class="text-slate-300 leading-relaxed" data-mock="true">
+                                                "Can you walk me through how you would implement a custom React hook for managing form state? What considerations would you make for validation and error handling?"
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Voice Controls -->
+                                <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+                                    <div class="flex items-center justify-center space-x-6">
+                                        <button data-event="click:toggleMute" class="w-16 h-16 bg-slate-700 hover:bg-slate-600 rounded-full flex items-center justify-center transition-colors group">
+                                            <i class="fas fa-microphone text-white text-xl group-hover:scale-110 transition-transform"></i>
+                                        </button>
+                                        <button data-event="click:pauseInterview" class="w-20 h-20 bg-primary-500 hover:bg-primary-600 rounded-full flex items-center justify-center transition-all transform hover:scale-105">
+                                            <i class="fas fa-pause text-white text-2xl"></i>
+                                        </button>
+                                        <button data-event="click:skipQuestion" class="w-16 h-16 bg-slate-700 hover:bg-slate-600 rounded-full flex items-center justify-center transition-colors group">
+                                            <i class="fas fa-forward text-white text-xl group-hover:scale-110 transition-transform"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Voice Indicator -->
+                                    <div class="mt-4 text-center">
+                                        <div class="inline-flex items-center space-x-2 text-green-400">
+                                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                                            <span class="text-sm">Listening...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Interview Progress & Notes -->
+                            <div class="space-y-6">
+                                <!-- Progress -->
+                                <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+                                    <h4 class="text-white font-medium mb-4">Interview Progress</h4>
+                                    <div class="space-y-4">
+                                        <div>
+                                            <div class="flex justify-between text-sm mb-2">
+                                                <span class="text-slate-400">Questions</span>
+                                                <span class="text-white">5/8</span>
+                                            </div>
+                                            <div class="w-full bg-slate-700 rounded-full h-2">
+                                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 rounded-full" style="width: 62.5%"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-sm mb-2">
+                                                <span class="text-slate-400">Time</span>
+                                                <span class="text-white">15:30</span>
+                                            </div>
+                                            <div class="w-full bg-slate-700 rounded-full h-2">
+                                                <div class="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full" style="width: 51.6%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Real-time Feedback -->
+                                <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+                                    <h4 class="text-white font-medium mb-4">Live Feedback</h4>
+                                    <div class="space-y-3">
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-slate-400 text-sm">Confidence</span>
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-16 bg-slate-700 rounded-full h-2">
+                                                    <div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div>
+                                                </div>
+                                                <span class="text-green-400 text-sm">85%</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-slate-400 text-sm">Clarity</span>
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-16 bg-slate-700 rounded-full h-2">
+                                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 78%"></div>
+                                                </div>
+                                                <span class="text-blue-400 text-sm">78%</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-slate-400 text-sm">Pace</span>
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-16 bg-slate-700 rounded-full h-2">
+                                                    <div class="bg-yellow-500 h-2 rounded-full" style="width: 92%"></div>
+                                                </div>
+                                                <span class="text-yellow-400 text-sm">92%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Quick Notes -->
+                                <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+                                    <h4 class="text-white font-medium mb-4">Quick Notes</h4>
+                                    <textarea data-implementation="Auto-save notes during interview" placeholder="Jot down key points..." class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white placeholder-slate-400 text-sm resize-none" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: InterviewInterface -->
+
+    <!-- How It Works Section -->
+    <!-- @COMPONENT: HowItWorksSection [step-by-step process] -->
+    <section id="how-it-works" class="py-20 bg-slate-50 dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+                    How It Works
+                </h2>
+                <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                    Get started with AI-powered interview practice in just a few simple steps. No complex setup required.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center group">
+                    <div class="relative mb-8">
+                        <div class="w-20 h-20 bg-gradient-to-br from-primary-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <span class="text-2xl font-bold text-white">1</span>
+                        </div>
+                        <div class="absolute top-10 left-1/2 transform -translate-x-1/2 w-px h-16 bg-gradient-to-b from-primary-500 to-transparent md:hidden"></div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Choose Your Role</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Select your target job role, tech stack, and experience level. Our AI will customize questions specifically for your needs.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center group">
+                    <div class="relative mb-8">
+                        <div class="w-20 h-20 bg-gradient-to-br from-secondary-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <span class="text-2xl font-bold text-white">2</span>
+                        </div>
+                        <div class="absolute top-10 left-1/2 transform -translate-x-1/2 w-px h-16 bg-gradient-to-b from-secondary-500 to-transparent md:hidden"></div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Practice with AI</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Engage in natural voice conversations with our AI interviewer. Practice answering questions in real-time with instant feedback.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center group">
+                    <div class="relative mb-8">
+                        <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <span class="text-2xl font-bold text-white">3</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Improve & Succeed</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Review detailed feedback, track your progress, and continuously improve your interview skills until you're ready to excel.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center mt-16">
+                <button data-event="click:getStarted" class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 transform hover:scale-105">
+                    Start Your First Interview
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HowItWorksSection -->
+
+    <!-- Pricing Section -->
+    <!-- @COMPONENT: PricingSection [subscription plans] -->
+    <section id="pricing" class="py-20 bg-white dark:bg-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+                    Simple, Transparent Pricing
+                </h2>
+                <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                    Choose the plan that fits your interview preparation needs. Start free and upgrade as you grow.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Free Plan -->
+                <div class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-700">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Free</h3>
+                        <div class="text-4xl font-bold text-slate-900 dark:text-white mb-4">$0<span class="text-lg text-slate-500 dark:text-slate-400">/month</span></div>
+                        <p class="text-slate-600 dark:text-slate-300">Perfect for getting started</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span class="text-slate-600 dark:text-slate-300">3 interviews per month</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span class="text-slate-600 dark:text-slate-300">Basic AI feedback</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span class="text-slate-600 dark:text-slate-300">5 job roles</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-times text-slate-400"></i>
+                            <span class="text-slate-400">Voice-enabled interviews</span>
+                        </li>
+                    </ul>
+                    <button data-event="click:selectFreePlan" class="w-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600 py-3 rounded-xl font-semibold transition-colors">
+                        Get Started Free
+                    </button>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="bg-gradient-to-br from-primary-50 to-blue-50 dark:from-primary-900/20 dark:to-blue-900/20 rounded-2xl p-8 border-2 border-primary-200 dark:border-primary-800 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-primary-500 text-white px-4 py-2 rounded-full text-sm font-semibold">Most Popular</span>
+                    </div>
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Pro</h3>
+                        <div class="text-4xl font-bold text-slate-900 dark:text-white mb-4">$19<span class="text-lg text-slate-500 dark:text-slate-400">/month</span></div>
+                        <p class="text-slate-600 dark:text-slate-300">For serious job seekers</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span class="text-slate-600 dark:text-slate-300">Unlimited interviews</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span class="text-slate-600 dark:text-slate-300">Voice-enabled interviews</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span class="text-slate-600 dark:text-slate-300">Advanced AI feedback</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span class="text-slate-600 dark:text-slate-300">50+ job roles</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span class="text-slate-600 dark:text-slate-300">Performance analytics</span>
+                        </li>
+                    </ul>
+                    <button data-event="click:selectProPlan" class="w-full bg-primary-500 hover:bg-primary-600 text-white py-3 rounded-xl font-semibold transition-colors">
+                        Start Pro Trial
+                    </button>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-700">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Enterprise</h3>
+                        <div class="text-4xl font-bold text-slate-900 dark:text-white mb-4">$99<span class="text-lg text-slate-500 dark:text-slate-400">/month</span></div>
+                        <p class="text-slate-600 dark:text-slate-300">For teams and organizations</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span class="text-slate-600 dark:text-slate-300">Everything in Pro</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span class="text-slate-600 dark:text-slate-300">Team management</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span class="text-slate-600 dark:text-slate-300">Custom integrations</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span class="text-slate-600 dark:text-slate-300">Priority support</span>
+                        </li>
+                    </ul>
+                    <button data-event="click:contactSales" class="w-full bg-slate-800 dark:bg-slate-700 text-white hover:bg-slate-700 dark:hover:bg-slate-600 py-3 rounded-xl font-semibold transition-colors">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: PricingSection -->
+
+    <!-- Footer -->
+    <!-- @COMPONENT: Footer [site footer with links] -->
+    <footer class="bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Brand and Description -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-8 h-8 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-microphone text-white text-sm"></i>
+                        </div>
+                        <span class="text-xl font-bold">InterviewAI</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-6 max-w-md">
+                        The most advanced AI-powered interview practice platform. Build confidence, improve skills, and land your dream job with personalized feedback and realistic interview simulations.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-twitter text-slate-400"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-linkedin text-slate-400"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-github text-slate-400"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Links -->
+                <div>
+                    <h4 class="font-semibold mb-6">Product</h4>
+                    <ul class="space-y-4 text-slate-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">API</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Integrations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Links -->
+                <div>
+                    <h4 class="font-semibold mb-6">Support</h4>
+                    <ul class="space-y-4 text-slate-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Status</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-slate-400 text-sm">© 2024 InterviewAI. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-slate-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-slate-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                    <a href="#" class="text-slate-400 hover:text-white text-sm transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <!-- Modal Overlays -->
+    <!-- @COMPONENT: AuthModals [login/register modals] -->
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-md animate-slide-up">
+                <div class="p-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Welcome Back</h2>
+                        <p class="text-slate-600 dark:text-slate-300">Sign in to continue your interview practice</p>
+                    </div>
+
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors" placeholder="your@email.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Password</label>
+                            <input type="password" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors" placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="w-full bg-primary-500 hover:bg-primary-600 text-white py-3 rounded-xl font-semibold transition-colors">
+                            Sign In
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-6">
+                        <p class="text-slate-600 dark:text-slate-300">
+                            Don't have an account? 
+                            <button data-event="click:switchToRegister" class="text-primary-500 hover:text-primary-600 font-medium">Sign up</button>
+                        </p>
+                    </div>
+                </div>
+
+                <button data-event="click:closeModal" class="absolute top-4 right-4 w-8 h-8 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-full flex items-center justify-center transition-colors">
+                    <i class="fas fa-times text-slate-600 dark:text-slate-300"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-md animate-slide-up">
+                <div class="p-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Get Started</h2>
+                        <p class="text-slate-600 dark:text-slate-300">Create your account to start practicing</p>
+                    </div>
+
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Full Name</label>
+                            <input type="text" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors" placeholder="your@email.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Password</label>
+                            <input type="password" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors" placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="w-full bg-primary-500 hover:bg-primary-600 text-white py-3 rounded-xl font-semibold transition-colors">
+                            Create Account
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-6">
+                        <p class="text-slate-600 dark:text-slate-300">
+                            Already have an account? 
+                            <button data-event="click:switchToLogin" class="text-primary-500 hover:text-primary-600 font-medium">Sign in</button>
+                        </p>
+                    </div>
+                </div>
+
+                <button data-event="click:closeModal" class="absolute top-4 right-4 w-8 h-8 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-full flex items-center justify-center transition-colors">
+                    <i class="fas fa-times text-slate-600 dark:text-slate-300"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: AuthModals -->
+
+    <script>
+        // Basic interactive functionality
+        (function() {
+            // TODO: Implement business logic, API calls, and state management
+
+            // Dark mode toggle
+            const toggleTheme = () => {
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
+            };
+
+            // Load saved theme
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.documentElement.classList.add('dark');
+            }
+
+            // Modal management
+            const showModal = (modalId) => {
+                document.getElementById(modalId).classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const hideModal = (modalId) => {
+                document.getElementById(modalId).classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            };
+
+            // Event delegation for all interactive elements
+            document.addEventListener('click', (e) => {
+                const element = e.target.closest('[data-event]');
+                if (!element) return;
+
+                const event = element.getAttribute('data-event');
+                
+                switch(event) {
+                    case 'click:toggleTheme':
+                        toggleTheme();
+                        break;
+                    case 'click:showLogin':
+                        showModal('loginModal');
+                        break;
+                    case 'click:showRegister':
+                        showModal('registerModal');
+                        break;
+                    case 'click:closeModal':
+                        hideModal('loginModal');
+                        hideModal('registerModal');
+                        break;
+                    case 'click:switchToRegister':
+                        hideModal('loginModal');
+                        showModal('registerModal');
+                        break;
+                    case 'click:switchToLogin':
+                        hideModal('registerModal');
+                        showModal('loginModal');
+                        break;
+                    default:
+                        console.log('Event handler needed for:', event);
+                }
+            });
+
+            // Close modals on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    hideModal('loginModal');
+                    hideModal('registerModal');
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
